@@ -1,4 +1,3 @@
-[Uploading README.md…]()
 # For You
 
 A birthday site for your wife: her song, her photos, hosted free on GitHub Pages (no domain to buy).

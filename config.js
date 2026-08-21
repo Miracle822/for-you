@@ -1,14 +1,11 @@
 // Change these lines. Then save the file.
 window.SITE = {
-  herName: "nazanin",
-  yourName: "alireza",
+  herName: "Nazanin",
+  yourName: "Alireza",
   message:
-    "I made this little corner of the internet for your birthday. There is a song I wrote for you, and some photos of us. I hope it makes you smile.",
-  songFile: "jess-fire-Different-Faces-But-The-Same-Old-Fight320.mp3",
+    "Tavalodet mobarak bashe nafasam omidavaram mano babat raftaram bebakhshi khoshgelam ino beddon ke dosset daram va ta akhare omr pa be patam in ahangam taghdim be ghashangiaye toe.",
+  songFile: "audio/jess-fire-Different-Faces-But-The-Same-Old-Fight320.mp3",
   photos: [
-    "download.jpg"
-    // Add your files like this after you put them in the photos folder:
-    // "photos/us-1.jpg",
-    // "photos/us-2.jpg",
+    "photos/download.jpg",
   ],
 };

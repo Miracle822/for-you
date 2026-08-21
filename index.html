@@ -11,9 +11,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      [hidden] { display: none !important; }
+      #petals {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .gate { position: relative; z-index: 2; }
+    </style>
   </head>
   <body>
-    <canvas id="petals" aria-hidden="true"></canvas>
+    <canvas id="petals" aria-hidden="true" style="pointer-events: none; position: fixed; inset: 0; z-index: 0;"></canvas>
 
     <section id="gate" class="gate">
       <button type="button" id="open-letter" class="envelope" aria-label="Open this birthday letter">

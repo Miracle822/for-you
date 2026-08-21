@@ -27,11 +27,19 @@ body {
   overflow-x: hidden;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 #petals {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+}
+
+.lightbox[hidden] {
+  display: none !important;
 }
 
 .gate,

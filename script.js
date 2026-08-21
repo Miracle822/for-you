@@ -9,7 +9,15 @@ const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
 const canvas = document.getElementById("petals");
-const ctx = canvas.getContext("2d");
+const ctx = canvas ? canvas.getContext("2d") : null;
+
+openBtn.addEventListener("click", () => {
+  gate.hidden = true;
+  letter.hidden = false;
+  if (song && song.src) {
+    song.play().catch(() => {});
+  }
+});
 
 document.getElementById("her-name").textContent = site.herName || "For you";
 document.getElementById("message").textContent = site.message || "";
@@ -20,12 +28,6 @@ document.getElementById("signoff").textContent = site.yourName
 if (site.songFile) {
   song.src = site.songFile;
 }
-
-openBtn.addEventListener("click", () => {
-  gate.hidden = true;
-  letter.hidden = false;
-  song.play().catch(() => {});
-});
 
 song.addEventListener("play", () => vinyl.classList.add("spinning"));
 song.addEventListener("pause", () => vinyl.classList.remove("spinning"));
@@ -79,11 +81,13 @@ const petals = Array.from({ length: 28 }, () => ({
 }));
 
 function resize() {
+  if (!canvas) return;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 
 function drawPetals() {
+  if (!ctx) return;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   petals.forEach((p) => {
     p.y += p.s;
