@@ -19,26 +19,19 @@
         z-index: 0;
         pointer-events: none;
       }
-      .gate { position: relative; z-index: 2; }
+      .letter { position: relative; z-index: 2; }
     </style>
   </head>
   <body>
     <canvas id="petals" aria-hidden="true" style="pointer-events: none; position: fixed; inset: 0; z-index: 0;"></canvas>
 
-    <section id="gate" class="gate">
-      <button type="button" id="open-letter" class="envelope" aria-label="Open this birthday letter">
-        <span class="envelope__flap"></span>
-        <span class="envelope__heart">♥</span>
-        <span class="envelope__text">A little something for you</span>
-        <span class="envelope__hint">Tap to open</span>
-      </button>
-    </section>
-
-    <main id="letter" class="letter" hidden>
+    <main id="letter" class="letter">
       <header class="hero">
         <p class="eyebrow">Happy birthday, my love</p>
-        <h1 id="her-name">For you</h1>
-        <p id="message" class="message"></p>
+        <h1 id="her-name">Nazanin</h1>
+        <p id="message" class="message">
+          Tavalodet mobarak bashe nafasam omidavaram mano babat raftaram bebakhshi khoshgelam ino beddon ke dosset daram va ta akhare omr pa be patam in ahangam taghdim be ghashangiaye toe.
+        </p>
       </header>
 
       <section class="song-card" aria-labelledby="song-heading">
@@ -48,7 +41,7 @@
         <div class="song-copy">
           <h2 id="song-heading">A song I made for you</h2>
           <p>Press play and stay here with me for a minute.</p>
-          <audio id="song" controls preload="metadata">
+          <audio id="song" controls preload="auto" src="audio/song.mp3">
             Your browser does not support audio.
           </audio>
         </div>
@@ -57,11 +50,15 @@
       <section class="gallery-wrap" aria-labelledby="photos-heading">
         <h2 id="photos-heading">Our moments</h2>
         <p class="gallery-note">A few photos I keep coming back to.</p>
-        <div id="gallery" class="gallery"></div>
+        <div id="gallery" class="gallery">
+          <button type="button" class="polaroid" id="photo-btn">
+            <img src="photos/photo.jpg" alt="A memory" />
+          </button>
+        </div>
       </section>
 
       <footer class="footer">
-        <p id="signoff">Always yours</p>
+        <p id="signoff">Always yours, Alireza</p>
       </footer>
     </main>
 

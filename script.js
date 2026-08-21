@@ -1,8 +1,5 @@
 const site = window.SITE || {};
 
-const gate = document.getElementById("gate");
-const letter = document.getElementById("letter");
-const openBtn = document.getElementById("open-letter");
 const song = document.getElementById("song");
 const vinyl = document.getElementById("vinyl");
 const gallery = document.getElementById("gallery");
@@ -11,38 +8,39 @@ const lightboxImage = document.getElementById("lightbox-image");
 const canvas = document.getElementById("petals");
 const ctx = canvas ? canvas.getContext("2d") : null;
 
-openBtn.addEventListener("click", () => {
-  gate.hidden = true;
-  letter.hidden = false;
-  if (song && song.src) {
-    song.play().catch(() => {});
-  }
-});
+const herName = document.getElementById("her-name");
+const message = document.getElementById("message");
+const signoff = document.getElementById("signoff");
 
-document.getElementById("her-name").textContent = site.herName || "For you";
-document.getElementById("message").textContent = site.message || "";
-document.getElementById("signoff").textContent = site.yourName
-  ? `Always yours, ${site.yourName}`
-  : "Always yours";
+if (herName && site.herName) herName.textContent = site.herName;
+if (message && site.message) message.textContent = site.message;
+if (signoff) {
+  signoff.textContent = site.yourName
+    ? `Always yours, ${site.yourName}`
+    : "Always yours";
+}
 
-if (site.songFile) {
+if (song && site.songFile) {
   song.src = site.songFile;
 }
 
-song.addEventListener("play", () => vinyl.classList.add("spinning"));
-song.addEventListener("pause", () => vinyl.classList.remove("spinning"));
-song.addEventListener("ended", () => vinyl.classList.remove("spinning"));
+if (song && vinyl) {
+  song.addEventListener("play", () => vinyl.classList.add("spinning"));
+  song.addEventListener("pause", () => vinyl.classList.remove("spinning"));
+  song.addEventListener("ended", () => vinyl.classList.remove("spinning"));
+}
+
+function openLightbox(src, alt) {
+  lightboxImage.src = src;
+  lightboxImage.alt = alt;
+  lightbox.hidden = false;
+}
 
 function renderGallery() {
   const photos = Array.isArray(site.photos) ? site.photos.filter(Boolean) : [];
+  if (!photos.length || !gallery) return;
+
   gallery.innerHTML = "";
-
-  if (!photos.length) {
-    gallery.innerHTML =
-      '<p class="placeholder">Add your photos to the <strong>photos</strong> folder, then list them in <strong>config.js</strong>.</p>';
-    return;
-  }
-
   photos.forEach((src, index) => {
     const button = document.createElement("button");
     button.type = "button";
@@ -56,19 +54,24 @@ function renderGallery() {
   });
 }
 
-function openLightbox(src, alt) {
-  lightboxImage.src = src;
-  lightboxImage.alt = alt;
-  lightbox.hidden = false;
+const photoBtn = document.getElementById("photo-btn");
+if (photoBtn) {
+  photoBtn.addEventListener("click", () =>
+    openLightbox("photos/photo.jpg", "A memory")
+  );
 }
 
-document.getElementById("lightbox-close").addEventListener("click", () => {
-  lightbox.hidden = true;
-});
+if (document.getElementById("lightbox-close")) {
+  document.getElementById("lightbox-close").addEventListener("click", () => {
+    lightbox.hidden = true;
+  });
+}
 
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) lightbox.hidden = true;
-});
+if (lightbox) {
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) lightbox.hidden = true;
+  });
+}
 
 renderGallery();
 
