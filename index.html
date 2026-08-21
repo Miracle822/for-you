@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="petals" aria-hidden="true"></canvas>
+
+    <section id="gate" class="gate">
+      <button type="button" id="open-letter" class="envelope" aria-label="Open this birthday letter">
+        <span class="envelope__flap"></span>
+        <span class="envelope__heart">♥</span>
+        <span class="envelope__text">A little something for you</span>
+        <span class="envelope__hint">Tap to open</span>
+      </button>
+    </section>
+
+    <main id="letter" class="letter" hidden>
+      <header class="hero">
+        <p class="eyebrow">Happy birthday, my love</p>
+        <h1 id="her-name">For you</h1>
+        <p id="message" class="message"></p>
+      </header>
+
+      <section class="song-card" aria-labelledby="song-heading">
+        <div class="vinyl" id="vinyl" aria-hidden="true">
+          <span class="vinyl__label"></span>
+        </div>
+        <div class="song-copy">
+          <h2 id="song-heading">A song I made for you</h2>
+          <p>Press play and stay here with me for a minute.</p>
+          <audio id="song" controls preload="metadata">
+            Your browser does not support audio.
+          </audio>
+        </div>
+      </section>
+
+      <section class="gallery-wrap" aria-labelledby="photos-heading">
+        <h2 id="photos-heading">Our moments</h2>
+        <p class="gallery-note">A few photos I keep coming back to.</p>
+        <div id="gallery" class="gallery"></div>
+      </section>
+
+      <footer class="footer">
+        <p id="signoff">Always yours</p>
+      </footer>
+    </main>
+
+    <div id="lightbox" class="lightbox" hidden>
+      <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Close photo">×</button>
+      <img id="lightbox-image" alt="" />
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
