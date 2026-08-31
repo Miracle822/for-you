@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقدیم به عشق زندگی‌ام</title>
+    <!-- استفاده از فونت زیبای وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        /* تنظیمات کلی و ریست کردن صفحه */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            padding: 20px;
+            /* ایجاد حس آرامش با حرکت ملایم زمینه */
+            background-attachment: fixed;
+        }
+
+        /* کادر اصلی سایت (کارت عاشقانه) */
+        .container {
+            max-width: 750px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 60px 20px 60px 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 
+                        0 0 0 1px rgba(255, 215, 215, 0.3) inset;
+            padding: 45px 35px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تزئینات با دایره‌های محو در پس‌زمینه کارت */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -70px;
+            right: -70px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(188, 143, 143, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* همه محتواها بالای تزئینات قرار بگیرند */
+        .container > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* استایل عنوان (اسم همسر) */
+        .title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #5c3a3a;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 215, 215, 0.4);
+        }
+        .title span {
+            display: inline-block;
+            background: linear-gradient(45deg, #b34141, #d66868);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sub-title {
+            text-align: center;
+            font-size: 1rem;
+            color: #7a5a5a;
+            margin-bottom: 30px;
+            opacity: 0.8;
+            border-bottom: 1px dashed #dbb4b4;
+            padding-bottom: 15px;
+        }
+
+        /* جعبه شعر و نامه */
+        .poem-box {
+            background: rgba(255, 248, 245, 0.6);
+            border-radius: 40px 10px 40px 10px;
+            padding: 30px 25px;
+            margin-bottom: 35px;
+            border-right: 4px solid #dba0a0;
+            box-shadow: 0 8px 20px rgba(140, 80, 80, 0.08);
+            transition: all 0.3s;
+        }
+
+        .poem-box:hover {
+            background: rgba(255, 248, 245, 0.9);
+            box-shadow: 0 12px 28px rgba(140, 80, 80, 0.15);
+        }
+
+        .poem {
+            font-size: 1.3rem;
+            line-height: 2.8rem;
+            color: #3f2b2b;
+            text-align: center;
+            font-weight: 400;
+            white-space: pre-line;
+        }
+
+        .poem .highlight {
+            font-weight: 700;
+            color: #a14545;
+            background: linear-gradient(120deg, rgba(255, 215, 215, 0.4) 0%, rgba(255, 215, 215, 0) 80%);
+            padding: 0 8px;
+        }
+
+        /* بخش پخش‌کننده موسیقی */
+        .music-player {
+            background: rgba(255, 235, 235, 0.5);
+            border-radius: 100px;
+            padding: 15px 25px;
+            margin: 20px 0 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .music-label {
+            font-size: 1rem;
+            color: #6b4c4c;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-label i {
+            font-style: normal;
+            font-size: 1.5rem;
+        }
+
+        /* استایل پلیر صوتی */
+        audio {
+            width: 100%;
+            max-width: 400px;
+            height: 45px;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        /* استایل دکمه‌های دانلود (اختیاری) */
+        .download-area {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #dbb4b4;
+            color: #3f2b2b;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-download:hover {
+            background: #c79a9a;
+            color: #2a1b1b;
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px rgba(160, 90, 90, 0.2);
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 0.9rem;
+            color: #8b6d6d;
+            border-top: 1px solid #edd7d7;
+            padding-top: 20px;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        /* انیمیشن آرام برای قلب یا هر چیز دیگر (اختیاری) */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .heart-icon {
+            display: inline-block;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* واکنش‌گرایی برای موبایل */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 40px 10px 40px 10px;
+            }
+            .title {
+                font-size: 1.9rem;
+            }
+            .poem {
+                font-size: 1.1rem;
+                line-height: 2.4rem;
+            }
+            .music-player {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- عنوان اصلی با اسم همسر -->
+        <h1 class="title">
+            <span class="heart-icon">❤️</span> 
+            به نام <span>نازنینم</span> 
+            <span class="heart-icon">❤️</span>
+        </h1>
+        <div class="sub-title">
+            ✦ تقدیم به زیباترین فصل زندگی‌ام ✦
+        </div>
+
+        <!-- جعبه‌ی نامه و اشعار -->
+        <div class="poem-box">
+            <div class="poem">
+                <span class="highlight">ای همسفر جان، ای همیشه در خاطر،</span>
+                عشق تو چون بوی گل در صبحگاه است.
+                جانم به مهر تو همیشه زنده است،
+                و این آهنگ، ترجمان ساده‌ی عشق بی‌پایان من است.
+
+                ——————
+
+                <span class="highlight">از غزل‌های حافظ:</span>
+                «دوش دیدم که ملایک در میخانه زدند
+                گل آدم بسرشتند و به پیمانه زدند»
+
+                «سایه‌ی عشق تو اگر افتاد بر این خاک،
+                من بهشتم، که دگر حسرت فردا نکشم»
+            </div>
+        </div>
+
+        <!-- بخش پخش آهنگ -->
+        <div class="music-player">
+            <div class="music-label">
+                <span>🎵</span> آهنگ ساخته‌شده‌ام برای تو <span>🎵</span>
+            </div>
+            <!-- 
+                IMPORTANT: 
+                فایل آهنگ خود را با نام "MySong.mp3" در همین پوشه قرار دهید.
+                اگر فرمت آن mp3 نیست، نام فایل را در قسمت src اصلاح کنید.
+            -->
+            <audio controls>
+                <source src="Morena.mp3" type="audio/mpeg">
+                مرورگر شما از پخش این آهنگ پشتیبانی نمی‌کند. 
+                (لطفاً فایل MySong.mp3 را در کنار این صفحه قرار دهید)
+            </audio>
+        </div>
+
+        <!-- گزینه دانلود (اختیاری) در صورت تمایل به دانلود آهنگ -->
+        <div class="download-area">
+            <a href="MySong.mp3" download class="btn-download">
+                ⬇️ دانلود آهنگ (برای گوشی همراه)
+            </a>
+        </div>
+
+        <div class="footer-note">
+            ✦ از ته دل، برای همیشه‌ی عشق ✦
+        </div>
+    </div>
+</body>
+</html>
